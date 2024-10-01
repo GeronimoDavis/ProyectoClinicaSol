@@ -28,12 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            label1 = new Label();
+            monthCalendar1 = new MonthCalendar();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(42, 33);
+            label1.Name = "label1";
+            label1.Size = new Size(194, 30);
+            label1.TabIndex = 0;
+            label1.Text = "Consulte su turno:";
+            // 
+            // monthCalendar1
+            // 
+            monthCalendar1.Location = new Point(18, 114);
+            monthCalendar1.Name = "monthCalendar1";
+            monthCalendar1.TabIndex = 1;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.AppWorkspace;
+            ClientSize = new Size(800, 450);
+            Controls.Add(monthCalendar1);
+            Controls.Add(label1);
+            Name = "Form1";
+            Text = "Clinic";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label label1;
+        private MonthCalendar monthCalendar1;
     }
 }
