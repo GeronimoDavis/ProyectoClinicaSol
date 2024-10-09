@@ -30,13 +30,19 @@
         {
             label1 = new Label();
             monthCalendar1 = new MonthCalendar();
+            label2 = new Label();
+            label3 = new Label();
+            comboBox1 = new ComboBox();
+            comboBox2 = new ComboBox();
+            listView1 = new ListView();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(42, 33);
+            label1.Location = new Point(28, 22);
+            label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
             label1.Size = new Size(194, 30);
             label1.TabIndex = 0;
@@ -44,18 +50,71 @@
             // 
             // monthCalendar1
             // 
-            monthCalendar1.Location = new Point(18, 114);
+            monthCalendar1.Location = new Point(23, 204);
+            monthCalendar1.Margin = new Padding(14, 15, 14, 15);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 1;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(23, 118);
+            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(120, 25);
+            label2.TabIndex = 2;
+            label2.Text = "Especialidad";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(358, 118);
+            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(114, 25);
+            label3.TabIndex = 3;
+            label3.Text = "Profecional";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(151, 115);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(176, 33);
+            comboBox1.TabIndex = 4;
+            // 
+            // comboBox2
+            // 
+            comboBox2.FormattingEnabled = true;
+            comboBox2.Location = new Point(480, 115);
+            comboBox2.Name = "comboBox2";
+            comboBox2.Size = new Size(177, 33);
+            comboBox2.TabIndex = 5;
+            // 
+            // listView1
+            // 
+            listView1.Location = new Point(302, 188);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(397, 195);
+            listView1.TabIndex = 6;
+            listView1.UseCompatibleStateImageBehavior = false;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(734, 461);
+            Controls.Add(listView1);
+            Controls.Add(comboBox2);
+            Controls.Add(comboBox1);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(monthCalendar1);
             Controls.Add(label1);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Margin = new Padding(5);
             Name = "Form1";
             Text = "Clinic";
             ResumeLayout(false);
@@ -66,5 +125,10 @@
 
         private Label label1;
         private MonthCalendar monthCalendar1;
+        private Label label2;
+        private Label label3;
+        private ComboBox comboBox1;
+        private ComboBox comboBox2;
+        private ListView listView1;
     }
 }
