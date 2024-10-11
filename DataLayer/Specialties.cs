@@ -8,7 +8,7 @@ using Entities;
 
 namespace DataLayer
 {
-    class Specialty
+    class Specialties
     {
         public List<Entities.Specialty> GetSpecialties()
         {
@@ -24,11 +24,11 @@ namespace DataLayer
 
             while (dr.Read())
             {
-                specialties.Add(new Entities.Specialty(Convert.ToInt32(dr[0]), dr[1].ToString()));
+                specialties.Add(new Entities.Specialty(Convert.ToInt32(dr["specialtyId"]), dr["specialtyName"].ToString()));
             }
 
             dr.Close();
-            conn.Close();
+            DataBase.CloseConnection(conn);
 
             return specialties;
         }

@@ -14,10 +14,10 @@ namespace DataLayer
             return connection;
         }
 
-        public static void CloseConnection()
+        public static void CloseConnection(SqlConnection con)
         {
-            if (connection.State == System.Data.ConnectionState.Open)
-                connection.Close();
+            if (con.State == System.Data.ConnectionState.Open)
+                con.Close();
         }
     }
 }
