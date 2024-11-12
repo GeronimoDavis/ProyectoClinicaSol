@@ -158,9 +158,19 @@ namespace DataLayer
             }
         }
 
-        public static void DeletePatient(Patient patient) 
+        public static void DeletePatient(int patientId) 
         { 
-            
+            using(SqlConnection conn = DataBase.connectDB())
+            {
+                string query = @"DELETE FROM Patients WHERE patientId = @patientId";
+
+                using(SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@patientId", patientId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         
         }
     }
