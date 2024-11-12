@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            monthCalendar1 = new MonthCalendar();
             label2 = new Label();
             label3 = new Label();
             comboBoxEspecialidades = new ComboBox();
             comboBox2 = new ComboBox();
             listView1 = new ListView();
+            button1 = new Button();
             SuspendLayout();
             // 
             // label1
@@ -48,18 +48,11 @@
             label1.TabIndex = 0;
             label1.Text = "Consulte su turno:";
             // 
-            // monthCalendar1
-            // 
-            monthCalendar1.Location = new Point(23, 204);
-            monthCalendar1.Margin = new Padding(14, 15, 14, 15);
-            monthCalendar1.Name = "monthCalendar1";
-            monthCalendar1.TabIndex = 1;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(23, 118);
+            label2.Location = new Point(14, 86);
             label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
             label2.Size = new Size(120, 25);
@@ -69,7 +62,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(358, 118);
+            label3.Location = new Point(349, 86);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
             label3.Size = new Size(114, 25);
@@ -79,7 +72,7 @@
             // comboBoxEspecialidades
             // 
             comboBoxEspecialidades.FormattingEnabled = true;
-            comboBoxEspecialidades.Location = new Point(151, 115);
+            comboBoxEspecialidades.Location = new Point(142, 83);
             comboBoxEspecialidades.Name = "comboBoxEspecialidades";
             comboBoxEspecialidades.Size = new Size(176, 33);
             comboBoxEspecialidades.TabIndex = 4;
@@ -88,18 +81,28 @@
             // comboBox2
             // 
             comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(480, 115);
+            comboBox2.Location = new Point(471, 83);
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(177, 33);
             comboBox2.TabIndex = 5;
             // 
             // listView1
             // 
-            listView1.Location = new Point(299, 171);
+            listView1.Location = new Point(322, 168);
             listView1.Name = "listView1";
-            listView1.Size = new Size(397, 195);
+            listView1.Size = new Size(356, 195);
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(23, 227);
+            button1.Name = "button1";
+            button1.Size = new Size(222, 63);
+            button1.TabIndex = 7;
+            button1.Text = "Paciente";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form1
             // 
@@ -107,12 +110,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
             ClientSize = new Size(739, 461);
+            Controls.Add(button1);
             Controls.Add(listView1);
             Controls.Add(comboBox2);
             Controls.Add(comboBoxEspecialidades);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(monthCalendar1);
             Controls.Add(label1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Margin = new Padding(5);
@@ -126,11 +129,11 @@
         #endregion
 
         private Label label1;
-        private MonthCalendar monthCalendar1;
         private Label label2;
         private Label label3;
         private ComboBox comboBoxEspecialidades;
         private ComboBox comboBox2;
         private ListView listView1;
+        private Button button1;
     }
 }

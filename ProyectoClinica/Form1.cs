@@ -24,6 +24,13 @@ namespace ProyectoClinica
             {
                 comboBoxEspecialidades.Items.Add(especialidad);
             }
+
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form2 nuevoFormulario = new Form2();
         }
     }
 }
