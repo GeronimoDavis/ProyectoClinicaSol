@@ -64,5 +64,6 @@ namespace ProyectoClinica
             MessageBox.Show("Paciente Editado");
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
     }
 }
