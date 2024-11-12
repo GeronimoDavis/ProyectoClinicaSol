@@ -85,6 +85,7 @@
             comboBox2.Name = "comboBox2";
             comboBox2.Size = new Size(177, 33);
             comboBox2.TabIndex = 5;
+            comboBox2.SelectedIndexChanged += comboBox2_SelectedIndexChanged;
             // 
             // listView1
             // 
