@@ -246,8 +246,18 @@ namespace ProyectoClinica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form5 nuevoFormulario = new Form5();
-            nuevoFormulario.ShowDialog();
+
+            if (patientToEdit != null)
+            {
+                Form5 nuevoFormulario = new Form5(patientToEdit);
+                nuevoFormulario.ShowDialog();
+            }
+            else
+            {
+
+                MessageBox.Show("Por favor, seleccione un paciente.");
+
+            }
         }
     }
 }

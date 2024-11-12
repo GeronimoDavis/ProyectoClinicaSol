@@ -10,6 +10,17 @@ namespace Entities
     {
         public int ScheludeId { get; set; }
         public int Day { get; set; }
+        public DateTime Time { get; set; }
+        public int ProfessionalId { get; set; }
 
+        public Appointments() { }
+
+        public Appointments(int scheludeId, int day, DateTime time, int professionalId) 
+        {
+            ScheludeId = scheludeId;
+            Day = day;
+            Time = time;
+            ProfessionalId = professionalId;
+        }
     }
 }
