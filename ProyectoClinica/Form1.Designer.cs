@@ -32,7 +32,7 @@
             monthCalendar1 = new MonthCalendar();
             label2 = new Label();
             label3 = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxEspecialidades = new ComboBox();
             comboBox2 = new ComboBox();
             listView1 = new ListView();
             SuspendLayout();
@@ -76,13 +76,14 @@
             label3.TabIndex = 3;
             label3.Text = "Profecional";
             // 
-            // comboBox1
+            // comboBoxEspecialidades
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(151, 115);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(176, 33);
-            comboBox1.TabIndex = 4;
+            comboBoxEspecialidades.FormattingEnabled = true;
+            comboBoxEspecialidades.Location = new Point(151, 115);
+            comboBoxEspecialidades.Name = "comboBoxEspecialidades";
+            comboBoxEspecialidades.Size = new Size(176, 33);
+            comboBoxEspecialidades.TabIndex = 4;
+            comboBoxEspecialidades.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
             // comboBox2
             // 
@@ -94,7 +95,7 @@
             // 
             // listView1
             // 
-            listView1.Location = new Point(302, 188);
+            listView1.Location = new Point(299, 171);
             listView1.Name = "listView1";
             listView1.Size = new Size(397, 195);
             listView1.TabIndex = 6;
@@ -105,10 +106,10 @@
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(734, 461);
+            ClientSize = new Size(739, 461);
             Controls.Add(listView1);
             Controls.Add(comboBox2);
-            Controls.Add(comboBox1);
+            Controls.Add(comboBoxEspecialidades);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(monthCalendar1);
@@ -127,7 +128,7 @@
         private MonthCalendar monthCalendar1;
         private Label label2;
         private Label label3;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxEspecialidades;
         private ComboBox comboBox2;
         private ListView listView1;
     }
