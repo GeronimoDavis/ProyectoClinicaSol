@@ -27,7 +27,7 @@ namespace ProyectoClinica
         private Button crearPaciente;
         private Button botonEstado;
         private Label label1;
-
+        private Button button1;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -39,7 +39,7 @@ namespace ProyectoClinica
             crearPaciente = new Button();
             botonEstado = new Button();
             label1 = new Label();
-
+            button1 = new Button();
             SuspendLayout();
             // 
             // pacientes
@@ -112,12 +112,22 @@ namespace ProyectoClinica
             label1.Text = "Opciones de paciente";
             label1.Click += label1_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(33, 169);
+            button1.Name = "button1";
+            button1.Size = new Size(130, 49);
+            button1.TabIndex = 7;
+            button1.Text = "Turnos";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
+            Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(botonEstado);
-
             Controls.Add(crearPaciente);
             Controls.Add(EditarPaciente);
             Controls.Add(borrarPaciente);
@@ -183,7 +193,7 @@ namespace ProyectoClinica
                 Form4 nuevoFormulario = new Form4(patientToEdit);
                 nuevoFormulario.ShowDialog();
             }
-            else 
+            else
             {
 
                 MessageBox.Show("Por favor, seleccione un paciente.");
@@ -200,16 +210,16 @@ namespace ProyectoClinica
         {// Verificar si se ha seleccionado un paciente
             if (patientToEdit != null)
             {
-                
+
                 bool newStatus = !patientToEdit.status;  // Si es true, lo cambiará a false y si es false, lo cambiará a true
 
-               
+
                 DataLayer.Patients.editarEstatus(patientToEdit.patientId, newStatus);
 
-                
+
                 patientToEdit.status = newStatus;
 
-                
+
                 infoPaciente.Items.Clear();
 
                 // Mostrar la información actualizada del paciente
@@ -221,9 +231,9 @@ namespace ProyectoClinica
                 infoPaciente.Items.Add("Historial medico: " + patientToEdit.medicalRecordNumber);
                 infoPaciente.Items.Add("Fecha de nacimiento: " + patientToEdit.birthDate);
                 infoPaciente.Items.Add("Notas: " + patientToEdit.notes);
-                infoPaciente.Items.Add("Estado: " + patientToEdit.status);  
+                infoPaciente.Items.Add("Estado: " + patientToEdit.status);
 
-                
+
                 MessageBox.Show("El estado del paciente ha sido actualizado.");
             }
             else
