@@ -103,5 +103,41 @@ namespace DataLayer
 
             return patient;
         }
+        public static void editarEstatus(Patient patient)
+        {
+
+        }
+
+        public static void EditPatient(Patient patient)
+        {
+            using (SqlConnection conn = DataBase.connectDB())
+            {
+                string query = @"UPDATE Patients 
+                         SET lastName = @lastName, 
+                             firstName = @firstName, 
+                             medicalRecordNumber = @medicalRecordNumber, 
+                             dni = @dni, 
+                             birthDate = @birthDate, 
+                             phone = @phone, 
+                             mobilePhone = @mobilePhone, 
+                             notes = @notes 
+                         WHERE patientId = @patientId";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@lastName", patient.lastName);
+                    cmd.Parameters.AddWithValue("@firstName", patient.firstName);
+                    cmd.Parameters.AddWithValue("@medicalRecordNumber", patient.medicalRecordNumber);
+                    cmd.Parameters.AddWithValue("@dni", patient.dni);
+                    cmd.Parameters.AddWithValue("@birthDate", patient.birthDate);
+                    cmd.Parameters.AddWithValue("@phone", patient.phone);
+                    cmd.Parameters.AddWithValue("@mobilePhone", patient.mobilePhone);
+                    cmd.Parameters.AddWithValue("@notes", patient.notes);
+                    cmd.Parameters.AddWithValue("@patientId", patient.patientId);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }
