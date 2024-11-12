@@ -65,9 +65,9 @@
             label3.Location = new Point(349, 86);
             label3.Margin = new Padding(5, 0, 5, 0);
             label3.Name = "label3";
-            label3.Size = new Size(114, 25);
+            label3.Size = new Size(113, 25);
             label3.TabIndex = 3;
-            label3.Text = "Profecional";
+            label3.Text = "Profesional";
             // 
             // comboBoxEspecialidades
             // 
@@ -94,6 +94,7 @@
             listView1.Size = new Size(356, 195);
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.List;
             // 
             // button1
             // 

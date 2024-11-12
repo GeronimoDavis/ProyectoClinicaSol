@@ -23,7 +23,7 @@ namespace ProyectoClinica
             List<Professional> professionals = DataLayer.Professionals.GetProfessionals();
             foreach (Professional professional in professionals)
             {
-                comboBox2.Items.Add(professional);
+                comboBox2.Items.Add(professional.professionalId + " " + professional.firstName + " " + professional.lastName);
             }
 
             comboBoxEspecialidades.Items.Clear();
@@ -49,6 +49,16 @@ namespace ProyectoClinica
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int idProfesional = Convert.ToInt32(comboBox2.SelectedItem.ToString().Split(" ")[0]);
+            Professional professional = DataLayer.Professionals.GetProfessional(idProfesional);
+            
+            listView1.Items.Clear();
+
+            listView1.Items.Add("Nombre: " + professional.firstName);
+            listView1.Items.Add("Apellido: " + professional.lastName);
+            listView1.Items.Add("DNI: " + professional.dni);
+            listView1.Items.Add("Celular: " + professional.mobilePhone);
+            listView1.Items.Add("Email: " + professional.email);
 
         }
     }

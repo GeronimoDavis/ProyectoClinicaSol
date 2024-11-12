@@ -44,5 +44,40 @@ namespace DataLayer
             return professionals;
 
         }
+
+        public static Professional GetProfessional(int id)
+        {
+            Professional professional = null;
+
+            SqlConnection conn = DataBase.connectDB();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT professionalId, lastName, firstName, dni, email, mobilePhone, specialtyId FROM Professionals WHERE professionalId = @id";
+            cmd.Connection = conn;
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            cmd.Parameters.AddWithValue("@id", id);
+
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            if (dr.Read())
+            {
+                professional = new Professional(
+                    Convert.ToInt32(dr["professionalId"]),
+                    dr["lastName"].ToString(),
+                    dr["firstName"].ToString(),
+                    dr["dni"].ToString(),
+                    dr["email"].ToString(),
+                    dr["mobilePhone"].ToString(),
+                    Convert.ToInt32(dr["specialtyId"])
+                );
+            }
+
+            dr.Close();
+            DataBase.CloseConnection(conn);
+
+            return professional;
+        }
+
     }
 }
