@@ -42,6 +42,7 @@ namespace ProyectoClinica
             pacientes.Size = new Size(263, 23);
             pacientes.TabIndex = 0;
             pacientes.SelectedIndexChanged += pacientes_SelectedIndexChanged;
+            pacientes.Click += pacientes_Click;
             // 
             // infoPaciente
             // 
@@ -93,12 +94,13 @@ namespace ProyectoClinica
             ResumeLayout(false);
         }
 
+
         private void pacientes_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void pacientes_Click(object sender, EventArgs e)
         {
             pacientes.Items.Clear();
             List<Patient> paciente = DataLayer.Patients.GetPatients();
@@ -106,6 +108,11 @@ namespace ProyectoClinica
             {
                 pacientes.Items.Add(pa);
             }
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void infoPaciente_SelectedIndexChanged(object sender, EventArgs e)
