@@ -71,6 +71,7 @@ namespace ProyectoClinica
             EditarPaciente.TabIndex = 3;
             EditarPaciente.Text = "Editar paciente";
             EditarPaciente.UseVisualStyleBackColor = true;
+            EditarPaciente.Click += EditarPaciente_Click;
             // 
             // crearPaciente
             // 
@@ -136,6 +137,12 @@ namespace ProyectoClinica
         private void crearPaciente_Click(object sender, EventArgs e)
         {
             Form3 nuevoFormulario = new Form3();
+            nuevoFormulario.ShowDialog();
+        }
+
+        private void EditarPaciente_Click(object sender, EventArgs e)
+        {
+            Form4 nuevoFormulario = new Form4();
             nuevoFormulario.ShowDialog();
         }
     }

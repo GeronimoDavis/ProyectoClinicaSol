@@ -68,7 +68,7 @@
             // 
             textBoxApellido.Location = new Point(198, 60);
             textBoxApellido.Name = "textBoxApellido";
-            textBoxApellido.PlaceholderText = "Nombre";
+            textBoxApellido.PlaceholderText = "Apellido";
             textBoxApellido.Size = new Size(154, 23);
             textBoxApellido.TabIndex = 2;
             // 
@@ -76,7 +76,7 @@
             // 
             textBoxDNI.Location = new Point(198, 89);
             textBoxDNI.Name = "textBoxDNI";
-            textBoxDNI.PlaceholderText = "Nombre";
+            textBoxDNI.PlaceholderText = "DNI";
             textBoxDNI.Size = new Size(154, 23);
             textBoxDNI.TabIndex = 3;
             textBoxDNI.TextChanged += textBox3_TextChanged;
@@ -85,7 +85,7 @@
             // 
             textBoxTelefono.Location = new Point(198, 118);
             textBoxTelefono.Name = "textBoxTelefono";
-            textBoxTelefono.PlaceholderText = "Nombre";
+            textBoxTelefono.PlaceholderText = "Telefono fijo";
             textBoxTelefono.Size = new Size(154, 23);
             textBoxTelefono.TabIndex = 4;
             // 
@@ -93,7 +93,7 @@
             // 
             textBoxCelular.Location = new Point(198, 147);
             textBoxCelular.Name = "textBoxCelular";
-            textBoxCelular.PlaceholderText = "Nombre";
+            textBoxCelular.PlaceholderText = "Celular";
             textBoxCelular.Size = new Size(154, 23);
             textBoxCelular.TabIndex = 5;
             // 
@@ -101,7 +101,7 @@
             // 
             textBoxHistoriaClinica.Location = new Point(198, 205);
             textBoxHistoriaClinica.Name = "textBoxHistoriaClinica";
-            textBoxHistoriaClinica.PlaceholderText = "Nombre";
+            textBoxHistoriaClinica.PlaceholderText = "Historia clinica";
             textBoxHistoriaClinica.Size = new Size(154, 23);
             textBoxHistoriaClinica.TabIndex = 6;
             // 
@@ -181,6 +181,7 @@
             // 
             textBoxNotas.Location = new Point(198, 234);
             textBoxNotas.Name = "textBoxNotas";
+            textBoxNotas.PlaceholderText = "Notas";
             textBoxNotas.Size = new Size(154, 23);
             textBoxNotas.TabIndex = 16;
             // 
