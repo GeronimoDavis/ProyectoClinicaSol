@@ -41,12 +41,12 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(28, 22);
+            label1.Location = new Point(14, 9);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
-            label1.Size = new Size(194, 30);
+            label1.Size = new Size(78, 30);
             label1.TabIndex = 0;
-            label1.Text = "Consulte su turno:";
+            label1.Text = "Clinica";
             // 
             // label2
             // 

@@ -14,7 +14,7 @@ namespace ProyectoClinica
 {
     public partial class Form2 : Form
     {
-        public Patient patientToEdit {  get; set; }
+        public Patient patientToEdit { get; set; }
 
         public Form2()
         {
@@ -25,6 +25,8 @@ namespace ProyectoClinica
         private Button borrarPaciente;
         private Button EditarPaciente;
         private Button crearPaciente;
+        private Button botonEstado;
+        private Label label1;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -34,12 +36,14 @@ namespace ProyectoClinica
             borrarPaciente = new Button();
             EditarPaciente = new Button();
             crearPaciente = new Button();
+            botonEstado = new Button();
+            label1 = new Label();
             SuspendLayout();
             // 
             // pacientes
             // 
             pacientes.FormattingEnabled = true;
-            pacientes.Location = new Point(198, 49);
+            pacientes.Location = new Point(213, 58);
             pacientes.Name = "pacientes";
             pacientes.Size = new Size(263, 23);
             pacientes.TabIndex = 0;
@@ -48,7 +52,7 @@ namespace ProyectoClinica
             // 
             // infoPaciente
             // 
-            infoPaciente.Location = new Point(187, 91);
+            infoPaciente.Location = new Point(200, 96);
             infoPaciente.Name = "infoPaciente";
             infoPaciente.Size = new Size(296, 172);
             infoPaciente.TabIndex = 1;
@@ -58,7 +62,7 @@ namespace ProyectoClinica
             // 
             // borrarPaciente
             // 
-            borrarPaciente.Location = new Point(34, 285);
+            borrarPaciente.Location = new Point(12, 285);
             borrarPaciente.Name = "borrarPaciente";
             borrarPaciente.Size = new Size(195, 43);
             borrarPaciente.TabIndex = 2;
@@ -67,7 +71,7 @@ namespace ProyectoClinica
             // 
             // EditarPaciente
             // 
-            EditarPaciente.Location = new Point(270, 285);
+            EditarPaciente.Location = new Point(253, 285);
             EditarPaciente.Name = "EditarPaciente";
             EditarPaciente.Size = new Size(191, 43);
             EditarPaciente.TabIndex = 3;
@@ -77,7 +81,7 @@ namespace ProyectoClinica
             // 
             // crearPaciente
             // 
-            crearPaciente.Location = new Point(482, 287);
+            crearPaciente.Location = new Point(504, 287);
             crearPaciente.Name = "crearPaciente";
             crearPaciente.Size = new Size(162, 41);
             crearPaciente.TabIndex = 4;
@@ -85,9 +89,32 @@ namespace ProyectoClinica
             crearPaciente.UseVisualStyleBackColor = true;
             crearPaciente.Click += crearPaciente_Click;
             // 
+            // botonEstado
+            // 
+            botonEstado.Location = new Point(35, 96);
+            botonEstado.Name = "botonEstado";
+            botonEstado.Size = new Size(122, 44);
+            botonEstado.TabIndex = 5;
+            botonEstado.Text = "Cambiar estado de paciente";
+            botonEstado.UseVisualStyleBackColor = true;
+            botonEstado.Click += botonEstado_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(223, 30);
+            label1.TabIndex = 6;
+            label1.Text = "Opciones de paciente";
+            label1.Click += label1_Click;
+            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
+            Controls.Add(label1);
+            Controls.Add(botonEstado);
             Controls.Add(crearPaciente);
             Controls.Add(EditarPaciente);
             Controls.Add(borrarPaciente);
@@ -96,6 +123,7 @@ namespace ProyectoClinica
             Name = "Form2";
             Load += Form2_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
         private void pacientes_SelectedIndexChanged(object sender, EventArgs e)
@@ -140,15 +168,66 @@ namespace ProyectoClinica
 
         private void crearPaciente_Click(object sender, EventArgs e)
         {
+
             Form3 nuevoFormulario = new Form3();
             nuevoFormulario.ShowDialog();
         }
 
         private void EditarPaciente_Click(object sender, EventArgs e)
         {
-            
-            Form4 nuevoFormulario = new Form4(patientToEdit);
-            nuevoFormulario.ShowDialog();
+            if (patientToEdit != null)
+            {
+                Form4 nuevoFormulario = new Form4(patientToEdit);
+                nuevoFormulario.ShowDialog();
+            }
+            else 
+            {
+
+                MessageBox.Show("Por favor, seleccione un paciente.");
+
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void botonEstado_Click(object sender, EventArgs e)
+        {// Verificar si se ha seleccionado un paciente
+            if (patientToEdit != null)
+            {
+                
+                bool newStatus = !patientToEdit.status;  // Si es true, lo cambiará a false y si es false, lo cambiará a true
+
+               
+                DataLayer.Patients.editarEstatus(patientToEdit.patientId, newStatus);
+
+                
+                patientToEdit.status = newStatus;
+
+                
+                infoPaciente.Items.Clear();
+
+                // Mostrar la información actualizada del paciente
+                infoPaciente.Items.Add("Nombre: " + patientToEdit.firstName);
+                infoPaciente.Items.Add("Apellido: " + patientToEdit.lastName);
+                infoPaciente.Items.Add("DNI: " + patientToEdit.dni);
+                infoPaciente.Items.Add("Telefono: " + patientToEdit.phone);
+                infoPaciente.Items.Add("Celular: " + patientToEdit.mobilePhone);
+                infoPaciente.Items.Add("Historial medico: " + patientToEdit.medicalRecordNumber);
+                infoPaciente.Items.Add("Fecha de nacimiento: " + patientToEdit.birthDate);
+                infoPaciente.Items.Add("Notas: " + patientToEdit.notes);
+                infoPaciente.Items.Add("Estado: " + patientToEdit.status);  
+
+                
+                MessageBox.Show("El estado del paciente ha sido actualizado.");
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un paciente.");
+            }
+
         }
     }
 }
