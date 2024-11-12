@@ -11,7 +11,7 @@ namespace DataLayer
     internal class Patients
     {
 
-        public List<Entities.Patient> GetPatients()
+        public static List<Entities.Patient> GetPatients()
         {
             List<Entities.Patient> patients = new List<Entities.Patient>();
 
@@ -45,6 +45,38 @@ namespace DataLayer
 
             return patients;
 
+        }
+
+        public static Patient getPatient(int dni) 
+        {
+            SqlConnection conn = DataBase.connectDB();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT patientId, lastName, firstName, medicalRecordNumber, dni, birthDate, phone, mobilePhone, notes, status FROM Patients WHERE dni = "+ dni + "ORDER BY lastName";
+            cmd.Connection = conn;
+            cmd.CommandType = System.Data.CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+            Patient patient = new Patient();
+            while (dr.Read()) 
+            {
+                patient.patientId = Convert.ToInt32(dr[0]);
+                patient.lastName = Convert.ToString(dr[1]);
+                patient.firstName = Convert.ToString(dr[2]);
+                patient.medicalRecordNumber = Convert.ToInt32(dr[3]);
+                patient.dni = Convert.ToString(dr[4]);
+                patient.birthDate = Convert.ToDateTime(dr[5]);
+                patient.phone = Convert.ToString(dr[6]);
+                patient.mobilePhone = Convert.ToString(dr[7]);
+                patient.notes = Convert.ToString(dr[8]);
+                patient.status = Convert.ToBoolean(dr[9]);
+
+            
+            
+            }
+            dr.Close();
+            DataBase.CloseConnection(conn);
+
+            return patient;
         }
     }
 }
