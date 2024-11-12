@@ -103,8 +103,26 @@ namespace DataLayer
 
             return patient;
         }
-        public static void editarEstatus(Patient patient)
+        public static void editarEstatus(int patientId, bool newStatus)
         {
+            using(SqlConnection conn = DataBase.connectDB())
+            {
+                string query = @"UPDATE Patients 
+                         SET status = @status 
+                         WHERE patientId = @patientId";
+
+
+                using (SqlCommand cmd = new SqlCommand(query, conn)) 
+                {
+
+                    cmd.Parameters.AddWithValue("@status", newStatus);
+                    cmd.Parameters.AddWithValue("@patientId", patientId);
+
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
 
         }
 
