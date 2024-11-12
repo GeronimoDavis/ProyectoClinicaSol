@@ -109,13 +109,13 @@ namespace DataLayer
             {
                 string query = @"UPDATE Patients 
                          SET status = @status 
-                         WHERE patientId = @patientId";
+                         WHERE patientId = @patientId"; // Consulta SQL para actualizar solo el campo 'status' del paciente
 
 
                 using (SqlCommand cmd = new SqlCommand(query, conn)) 
                 {
 
-                    cmd.Parameters.AddWithValue("@status", newStatus);
+                    cmd.Parameters.AddWithValue("@status", newStatus); // Asignamos el valor de 'newStatus' al parámetro @status en la consulta
                     cmd.Parameters.AddWithValue("@patientId", patientId);
 
 
