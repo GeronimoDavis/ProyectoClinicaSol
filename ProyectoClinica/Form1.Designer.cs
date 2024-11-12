@@ -118,6 +118,7 @@
             Margin = new Padding(5);
             Name = "Form1";
             Text = "Clinic";
+            Load += Form1_Load;
             ResumeLayout(false);
             PerformLayout();
         }

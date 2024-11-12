@@ -8,9 +8,9 @@ using Entities;
 
 namespace DataLayer
 {
-    class Specialties
+    public class Specialties
     {
-        public List<Entities.Specialty> GetSpecialties()
+        public static List<Entities.Specialty> GetSpecialties()
         {
             List<Entities.Specialty> specialties = new List<Entities.Specialty>();
 
