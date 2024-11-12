@@ -45,6 +45,7 @@ namespace ProyectoClinica
 
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
             Patient editedPatient = new Patient();
@@ -63,6 +64,5 @@ namespace ProyectoClinica
             MessageBox.Show("Paciente Editado");
             this.DialogResult = DialogResult.OK;
             this.Close();
-        }
     }
 }

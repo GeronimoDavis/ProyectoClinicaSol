@@ -103,8 +103,26 @@ namespace DataLayer
 
             return patient;
         }
-        public static void editarEstatus(Patient patient)
+        public static void editarEstatus(int patientId, bool newStatus)
         {
+            using(SqlConnection conn = DataBase.connectDB())
+            {
+                string query = @"UPDATE Patients 
+                         SET status = @status 
+                         WHERE patientId = @patientId"; // Consulta SQL para actualizar solo el campo 'status' del paciente que coincida con el patientid
+
+
+                using (SqlCommand cmd = new SqlCommand(query, conn)) 
+                {
+
+                    cmd.Parameters.AddWithValue("@status", newStatus); // Asignamos el valor de 'newStatus' al parámetro @status en la consulta
+                    cmd.Parameters.AddWithValue("@patientId", patientId); //indica qué registro debe actualizarse basándose en el valor de patientid
+
+
+                    cmd.ExecuteNonQuery();
+
+                }
+            }
 
         }
 
@@ -135,9 +153,25 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@notes", patient.notes);
                     cmd.Parameters.AddWithValue("@patientId", patient.patientId);
 
+                    cmd.ExecuteNonQuery();//actualiza el registro que coincide con el patientId y cambia únicamente el campo status al valor newStatus
+                }
+            }
+        }
+
+        public static void DeletePatient(int patientId) 
+        { 
+            using(SqlConnection conn = DataBase.connectDB())
+            {
+                string query = @"DELETE FROM Patients WHERE patientId = @patientId";
+
+                using(SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@patientId", patientId);
+
                     cmd.ExecuteNonQuery();
                 }
             }
+        
         }
     }
 }
