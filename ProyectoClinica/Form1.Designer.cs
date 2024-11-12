@@ -95,6 +95,7 @@
             listView1.TabIndex = 6;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.List;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
             // 
             // button1
             // 

@@ -13,25 +13,26 @@ namespace ProyectoClinica
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int specialtyId = comboBoxEspecialidades.SelectedIndex; // O el specialtyId si quieres usar el valor de la especialidad seleccionada
-            List<Professional> professionals = DataLayer.Professionals.GetProfessionalsBySpecialty(specialtyId);
-
-            comboBox2.Items.Clear(); // Limpiar los elementos actuales
-            foreach (Professional professional in professionals)
+            if (comboBoxEspecialidades.SelectedItem is Specialty specialty)
             {
-                comboBox2.Items.Add(professional.professionalId + " " + professional.firstName + " " + professional.lastName);
+                int specialtyId = specialty.specialtyId; 
+                List<Professional> professionals = DataLayer.Professionals.GetProfessionalsBySpecialty(specialtyId);//obtiene la lista de profesionales que pertenecen a la especialidad
+
+                comboBox2.Items.Clear(); // Limpiar los elementos actuales
+                foreach (Professional professional in professionals)
+                {
+                    comboBox2.Items.Add(professional.professionalId + " " + professional.firstName + " " + professional.lastName);
+                }
+                // Habilitar comboBox2 solo si hay profesionales para mostrar
+                comboBox2.Enabled = professionals.Any();
             }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            comboBox2.Enabled = false;
 
             comboBox2.Items.Clear();
-            List<Professional> professionals = DataLayer.Professionals.GetProfessionals();
-            foreach (Professional professional in professionals)
-            {
-                comboBox2.Items.Add(professional.professionalId + " " + professional.firstName + " " + professional.lastName);
-            }
 
             comboBoxEspecialidades.Items.Clear();
             List<Specialty> especialidades = DataLayer.Specialties.GetSpecialties();
@@ -39,11 +40,6 @@ namespace ProyectoClinica
             {
                 comboBoxEspecialidades.Items.Add(especialidad);
             }
-
-            
-
-
-            
 
         }
 
@@ -56,18 +52,29 @@ namespace ProyectoClinica
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int idProfesional = Convert.ToInt32(comboBox2.SelectedItem.ToString().Split(" ")[0]);
-            Professional professional = DataLayer.Professionals.GetProfessional(idProfesional);
+            // Verificar si hay una selección válida de profesional
+            if (comboBox2.SelectedItem != null) 
+            {
+                int idProfesional = Convert.ToInt32(comboBox2.SelectedItem.ToString().Split(" ")[0]);
+                Professional professional = DataLayer.Professionals.GetProfessional(idProfesional);
 
-            listView1.Items.Clear(); // Limpiar los elementos previos
+                listView1.Items.Clear(); // Limpiar los elementos previos
 
-            ListViewItem item = new ListViewItem("Nombre: " + professional.firstName);
-            item.SubItems.Add("Apellido: " + professional.lastName);
-            item.SubItems.Add("DNI: " + professional.dni);
-            item.SubItems.Add("Celular: " + professional.mobilePhone);
-            item.SubItems.Add("Email: " + professional.email);
+                listView1.Items.Add("Nombre: " + professional.firstName);
+                listView1.Items.Add("Apellido: " + professional.lastName);
+                listView1.Items.Add("DNI: " + professional.dni);
+                listView1.Items.Add("Celular: " + professional.mobilePhone);
+                listView1.Items.Add("Email: " + professional.email);
 
-            listView1.Items.Add(item);
+            }
+            
+
+            
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
