@@ -27,6 +27,7 @@ namespace ProyectoClinica
         private Button crearPaciente;
         private Button botonEstado;
         private Label label1;
+
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -38,6 +39,7 @@ namespace ProyectoClinica
             crearPaciente = new Button();
             botonEstado = new Button();
             label1 = new Label();
+
             SuspendLayout();
             // 
             // pacientes
@@ -115,6 +117,7 @@ namespace ProyectoClinica
             ClientSize = new Size(678, 350);
             Controls.Add(label1);
             Controls.Add(botonEstado);
+
             Controls.Add(crearPaciente);
             Controls.Add(EditarPaciente);
             Controls.Add(borrarPaciente);
@@ -228,6 +231,13 @@ namespace ProyectoClinica
                 MessageBox.Show("Por favor, seleccione un paciente.");
             }
 
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form5 nuevoFormulario = new Form5();
+            nuevoFormulario.ShowDialog();
         }
     }
 }
