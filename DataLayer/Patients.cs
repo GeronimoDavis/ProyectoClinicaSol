@@ -14,12 +14,11 @@ namespace DataLayer
         {
             using (SqlConnection conn = DataBase.connectDB())
             {
-                string query = @"INSERT INTO Patients (patientId, lastName, firstName, medicalRecordNumber, dni, birthDate, phone, mobilePhone, notes, status) 
-                                VALUES (@patientId, @lastName, @firstName, @medicalRecordNumber, @dni, @birthDate, @phone, @mobilePhone @notes, @status)";
+                string query = @"INSERT INTO Patients (lastName, firstName, medicalRecordNumber, dni, birthDate, phone, mobilePhone, notes, status) 
+                                VALUES (@lastName, @firstName, @medicalRecordNumber, @dni, @birthDate, @phone, @mobilePhone, @notes, @status)";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    cmd.Parameters.AddWithValue("@patientId", patient.patientId);
                     cmd.Parameters.AddWithValue("@lastName", patient.lastName);
                     cmd.Parameters.AddWithValue("@firstName", patient.firstName);
                     cmd.Parameters.AddWithValue("@medicalRecordNumber", patient.medicalRecordNumber);
@@ -30,7 +29,7 @@ namespace DataLayer
                     cmd.Parameters.AddWithValue("@notes", patient.notes);
                     cmd.Parameters.AddWithValue("@status", patient.status);
 
-                    conn.Open();
+                    //conn.Open();
 
                     cmd.ExecuteNonQuery();
                 }

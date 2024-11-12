@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,23 @@ namespace ProyectoClinica
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Patient patient = new Patient();
 
+            patient.firstName = textBoxNombre.Text;
+            patient.lastName = textBoxApellido.Text;
+            patient.dni = textBoxDNI.Text;
+            patient.phone = textBoxTelefono.Text;
+            patient.notes = textBoxNotas.Text;
+            patient.mobilePhone = textBoxCelular.Text;
+            patient.birthDate = Convert.ToDateTime(dateTimePicker1.Text);
+            patient.medicalRecordNumber = Convert.ToInt32(textBoxHistoriaClinica.Text);
+            patient.status = true;
+
+            DataLayer.Patients.CreatePatient(patient);
+
+            MessageBox.Show("Paciente Creado");
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

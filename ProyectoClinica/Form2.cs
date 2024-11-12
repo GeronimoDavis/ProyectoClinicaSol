@@ -78,6 +78,7 @@ namespace ProyectoClinica
             crearPaciente.TabIndex = 4;
             crearPaciente.Text = "Crear paciente";
             crearPaciente.UseVisualStyleBackColor = true;
+            crearPaciente.Click += crearPaciente_Click;
             // 
             // Form2
             // 
@@ -110,6 +111,12 @@ namespace ProyectoClinica
         private void infoPaciente_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void crearPaciente_Click(object sender, EventArgs e)
+        {
+            Form3 nuevoFormulario = new Form3();
+            nuevoFormulario.ShowDialog();
         }
     }
 }
