@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace ProyectoClinica
 {
     public partial class Form5 : Form
     {
-        public Form5()
+        public Form5(Patient patientToEdit)
         {
             InitializeComponent();
         }
