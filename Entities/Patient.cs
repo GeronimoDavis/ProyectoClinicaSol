@@ -19,7 +19,7 @@ namespace Entities
         public string notes { get; set; }
         public bool status { get; set; }
 
-
+     
         public Patient(int patientId, string lastName, string firstName, int medicalRecordNumber, string dni, DateTime birthDate, string phone, string mobilePhone, string notes, bool status)
         {
             this.patientId = patientId;
