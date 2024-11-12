@@ -6,12 +6,15 @@ using System.Text;
 using System.Threading.Tasks;
 using Entities;
 
+
+
+
 namespace DataLayer
 {
-    internal class Patients
+    public class Patients
     {
 
-        public List<Entities.Patient> GetPatients()
+        public static List<Entities.Patient> GetPatients()
         {
             List<Entities.Patient> patients = new List<Entities.Patient>();
 
@@ -39,12 +42,44 @@ namespace DataLayer
                 ));
 
             }
+            
+
+            
 
             dr.Close();
             DataBase.CloseConnection(conn);
 
             return patients;
 
+        }
+
+
+        public static Patient getPatient(int dniPatient) 
+        {
+            SqlConnection conn = DataBase.connectDB();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT patientId, lastName, firstName, medicalRecordNumber, dni, birthDate, phone, mobilePhone, notes, status FROM Patients WHERE dni = " + dniPatient + "order by lastName";
+            cmd.Connection = conn;
+            cmd.CommandType = System.Data.CommandType.Text;
+            SqlDataReader dr = cmd.ExecuteReader();
+
+            Patient patient = new Patient();
+
+            while (dr.Read()) 
+            {
+                patient.patientId = Convert.ToInt32(dr[0]);
+                patient.lastName = Convert.ToString(dr[1]);
+                patient.firstName = Convert.ToString(dr[2]);
+                patient.medicalRecordNumber = Convert.ToInt32(dr[3]);
+                patient.dni = Convert.ToString(dr[5]);
+                patient.birthDate = Convert.ToDateTime(dr[6]);
+                patient.phone = Convert.ToString(dr[7]);
+                patient.mobilePhone = Convert.ToString(dr[8]);
+                patient.notes = Convert.ToString(dr[9]);
+                patient.status = Convert.ToBoolean(dr[10]);
+
+
+            }
         }
     }
 }
