@@ -10,6 +10,32 @@ namespace DataLayer
 {
     public class Patients
     {
+        public static void CreatePatient(Patient patient)
+        {
+            using (SqlConnection conn = DataBase.connectDB())
+            {
+                string query = @"INSERT INTO Patients (patientId, lastName, firstName, medicalRecordNumber, dni, birthDate, phone, mobilePhone, notes, status) 
+                                VALUES (@patientId, @lastName, @firstName, @medicalRecordNumber, @dni, @birthDate, @phone, @mobilePhone @notes, @status)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@patientId", patient.patientId);
+                    cmd.Parameters.AddWithValue("@lastName", patient.lastName);
+                    cmd.Parameters.AddWithValue("@firstName", patient.firstName);
+                    cmd.Parameters.AddWithValue("@medicalRecordNumber", patient.medicalRecordNumber);
+                    cmd.Parameters.AddWithValue("@dni", patient.dni);
+                    cmd.Parameters.AddWithValue("@birthDate", patient.birthDate);
+                    cmd.Parameters.AddWithValue("@phone", patient.phone);
+                    cmd.Parameters.AddWithValue("@mobilePhone", patient.mobilePhone);
+                    cmd.Parameters.AddWithValue("@notes", patient.notes);
+                    cmd.Parameters.AddWithValue("@status", patient.status);
+
+                    conn.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
 
         public static List<Entities.Patient> GetPatients()
         {

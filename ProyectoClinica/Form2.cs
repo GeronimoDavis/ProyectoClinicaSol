@@ -1,4 +1,5 @@
 ﻿using Entities;
+using DataLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +22,7 @@ namespace ProyectoClinica
         private ComboBox pacientes;
         private Button borrarPaciente;
         private Button EditarPaciente;
+        private Button crearPaciente;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -29,6 +31,7 @@ namespace ProyectoClinica
             infoPaciente = new ListView();
             borrarPaciente = new Button();
             EditarPaciente = new Button();
+            crearPaciente = new Button();
             SuspendLayout();
             // 
             // pacientes
@@ -47,6 +50,7 @@ namespace ProyectoClinica
             infoPaciente.Size = new Size(296, 154);
             infoPaciente.TabIndex = 1;
             infoPaciente.UseCompatibleStateImageBehavior = false;
+            infoPaciente.SelectedIndexChanged += infoPaciente_SelectedIndexChanged;
             // 
             // borrarPaciente
             // 
@@ -66,9 +70,19 @@ namespace ProyectoClinica
             EditarPaciente.Text = "Editar paciente";
             EditarPaciente.UseVisualStyleBackColor = true;
             // 
+            // crearPaciente
+            // 
+            crearPaciente.Location = new Point(482, 287);
+            crearPaciente.Name = "crearPaciente";
+            crearPaciente.Size = new Size(162, 41);
+            crearPaciente.TabIndex = 4;
+            crearPaciente.Text = "Crear paciente";
+            crearPaciente.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
+            Controls.Add(crearPaciente);
             Controls.Add(EditarPaciente);
             Controls.Add(borrarPaciente);
             Controls.Add(infoPaciente);
@@ -87,10 +101,15 @@ namespace ProyectoClinica
         {
             pacientes.Items.Clear();
             List<Patient> paciente = DataLayer.Patients.GetPatients();
-            foreach (Patient pa in paciente) 
+            foreach (Patient pa in paciente)
             {
                 pacientes.Items.Add(pa);
             }
+        }
+
+        private void infoPaciente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
