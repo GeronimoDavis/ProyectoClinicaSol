@@ -9,6 +9,7 @@ namespace DataLayer
 
         public static SqlConnection connectDB()
         {
+
             connection = new SqlConnection("Server=DESKTOP-HUN8S6O\\SQLEXPRESS;Database=Clinic;Integrated Security=True;");
             connection.Open();
             return connection;

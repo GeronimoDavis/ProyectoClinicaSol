@@ -37,13 +37,13 @@
             label7 = new Label();
             label8 = new Label();
             textBoxNombre = new TextBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            textBoxApellido = new TextBox();
+            textBoxDNI = new TextBox();
             dateTimePicker1 = new DateTimePicker();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
+            textBoxTelefono = new TextBox();
+            textBoxCelular = new TextBox();
+            textBoxHistoriaClinica = new TextBox();
+            textBoxNotas = new TextBox();
             button1 = new Button();
             SuspendLayout();
             // 
@@ -129,21 +129,21 @@
             textBoxNombre.Size = new Size(99, 23);
             textBoxNombre.TabIndex = 8;
             // 
-            // textBox1
+            // textBoxApellido
             // 
-            textBox1.Location = new Point(236, 145);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Apellido";
-            textBox1.Size = new Size(99, 23);
-            textBox1.TabIndex = 9;
+            textBoxApellido.Location = new Point(236, 145);
+            textBoxApellido.Name = "textBoxApellido";
+            textBoxApellido.PlaceholderText = "Apellido";
+            textBoxApellido.Size = new Size(99, 23);
+            textBoxApellido.TabIndex = 9;
             // 
-            // textBox2
+            // textBoxDNI
             // 
-            textBox2.Location = new Point(236, 174);
-            textBox2.Name = "textBox2";
-            textBox2.PlaceholderText = "DNI";
-            textBox2.Size = new Size(99, 23);
-            textBox2.TabIndex = 10;
+            textBoxDNI.Location = new Point(236, 174);
+            textBoxDNI.Name = "textBoxDNI";
+            textBoxDNI.PlaceholderText = "DNI";
+            textBoxDNI.Size = new Size(99, 23);
+            textBoxDNI.TabIndex = 10;
             // 
             // dateTimePicker1
             // 
@@ -152,37 +152,37 @@
             dateTimePicker1.Size = new Size(99, 23);
             dateTimePicker1.TabIndex = 11;
             // 
-            // textBox3
+            // textBoxTelefono
             // 
-            textBox3.Location = new Point(236, 231);
-            textBox3.Name = "textBox3";
-            textBox3.PlaceholderText = "Telefono";
-            textBox3.Size = new Size(99, 23);
-            textBox3.TabIndex = 12;
+            textBoxTelefono.Location = new Point(236, 231);
+            textBoxTelefono.Name = "textBoxTelefono";
+            textBoxTelefono.PlaceholderText = "Telefono";
+            textBoxTelefono.Size = new Size(99, 23);
+            textBoxTelefono.TabIndex = 12;
             // 
-            // textBox4
+            // textBoxCelular
             // 
-            textBox4.Location = new Point(236, 260);
-            textBox4.Name = "textBox4";
-            textBox4.PlaceholderText = "Celular";
-            textBox4.Size = new Size(99, 23);
-            textBox4.TabIndex = 13;
+            textBoxCelular.Location = new Point(236, 260);
+            textBoxCelular.Name = "textBoxCelular";
+            textBoxCelular.PlaceholderText = "Celular";
+            textBoxCelular.Size = new Size(99, 23);
+            textBoxCelular.TabIndex = 13;
             // 
-            // textBox5
+            // textBoxHistoriaClinica
             // 
-            textBox5.Location = new Point(236, 291);
-            textBox5.Name = "textBox5";
-            textBox5.PlaceholderText = "Historia clinica";
-            textBox5.Size = new Size(99, 23);
-            textBox5.TabIndex = 14;
+            textBoxHistoriaClinica.Location = new Point(236, 291);
+            textBoxHistoriaClinica.Name = "textBoxHistoriaClinica";
+            textBoxHistoriaClinica.PlaceholderText = "Historia clinica";
+            textBoxHistoriaClinica.Size = new Size(99, 23);
+            textBoxHistoriaClinica.TabIndex = 14;
             // 
-            // textBox6
+            // textBoxNotas
             // 
-            textBox6.Location = new Point(236, 320);
-            textBox6.Name = "textBox6";
-            textBox6.PlaceholderText = "Notas";
-            textBox6.Size = new Size(99, 23);
-            textBox6.TabIndex = 15;
+            textBoxNotas.Location = new Point(236, 320);
+            textBoxNotas.Name = "textBoxNotas";
+            textBoxNotas.PlaceholderText = "Notas";
+            textBoxNotas.Size = new Size(99, 23);
+            textBoxNotas.TabIndex = 15;
             // 
             // button1
             // 
@@ -192,6 +192,7 @@
             button1.TabIndex = 16;
             button1.Text = "Editar paciente";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // Form4
             // 
@@ -199,13 +200,13 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button1);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
+            Controls.Add(textBoxNotas);
+            Controls.Add(textBoxHistoriaClinica);
+            Controls.Add(textBoxCelular);
+            Controls.Add(textBoxTelefono);
             Controls.Add(dateTimePicker1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxDNI);
+            Controls.Add(textBoxApellido);
             Controls.Add(textBoxNombre);
             Controls.Add(label8);
             Controls.Add(label7);
@@ -217,6 +218,7 @@
             Controls.Add(label1);
             Name = "Form4";
             Text = "Form4";
+            Load += Form4_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -232,13 +234,13 @@
         private Label label7;
         private Label label8;
         private TextBox textBoxNombre;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox textBoxApellido;
+        private TextBox textBoxDNI;
         private DateTimePicker dateTimePicker1;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
+        private TextBox textBoxTelefono;
+        private TextBox textBoxCelular;
+        private TextBox textBoxHistoriaClinica;
+        private TextBox textBoxNotas;
         private Button button1;
     }
 }
