@@ -14,6 +14,8 @@ namespace ProyectoClinica
 {
     public partial class Form2 : Form
     {
+        public Patient patientToEdit {  get; set; }
+
         public Form2()
         {
             InitializeComponent();
@@ -112,6 +114,8 @@ namespace ProyectoClinica
             infoPaciente.Items.Add("Fecha de nacimiento: " + paciente.birthDate);
             infoPaciente.Items.Add("Notas: " + paciente.notes);
             infoPaciente.Items.Add("Estado: " + paciente.status);
+
+            patientToEdit = paciente;
         }
 
         private void pacientes_Click(object sender, EventArgs e)
@@ -142,7 +146,8 @@ namespace ProyectoClinica
 
         private void EditarPaciente_Click(object sender, EventArgs e)
         {
-            Form4 nuevoFormulario = new Form4();
+            
+            Form4 nuevoFormulario = new Form4(patientToEdit);
             nuevoFormulario.ShowDialog();
         }
     }
