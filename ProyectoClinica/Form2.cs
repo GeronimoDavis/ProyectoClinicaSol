@@ -21,7 +21,6 @@ namespace ProyectoClinica
         private ComboBox pacientes;
         private Button borrarPaciente;
         private Button EditarPaciente;
-        private Button botonCrear;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -30,7 +29,6 @@ namespace ProyectoClinica
             infoPaciente = new ListView();
             borrarPaciente = new Button();
             EditarPaciente = new Button();
-            botonCrear = new Button();
             SuspendLayout();
             // 
             // pacientes
@@ -68,19 +66,9 @@ namespace ProyectoClinica
             EditarPaciente.Text = "Editar paciente";
             EditarPaciente.UseVisualStyleBackColor = true;
             // 
-            // botonCrear
-            // 
-            botonCrear.Location = new Point(493, 286);
-            botonCrear.Name = "botonCrear";
-            botonCrear.Size = new Size(173, 40);
-            botonCrear.TabIndex = 4;
-            botonCrear.Text = "Crear Paciente";
-            botonCrear.UseVisualStyleBackColor = true;
-            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
-            Controls.Add(botonCrear);
             Controls.Add(EditarPaciente);
             Controls.Add(borrarPaciente);
             Controls.Add(infoPaciente);
