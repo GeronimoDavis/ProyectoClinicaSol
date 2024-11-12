@@ -46,11 +46,12 @@ namespace ProyectoClinica
             // 
             // infoPaciente
             // 
-            infoPaciente.Location = new Point(187, 109);
+            infoPaciente.Location = new Point(187, 91);
             infoPaciente.Name = "infoPaciente";
-            infoPaciente.Size = new Size(296, 154);
+            infoPaciente.Size = new Size(296, 172);
             infoPaciente.TabIndex = 1;
             infoPaciente.UseCompatibleStateImageBehavior = false;
+            infoPaciente.View = View.List;
             infoPaciente.SelectedIndexChanged += infoPaciente_SelectedIndexChanged;
             // 
             // borrarPaciente
@@ -94,10 +95,22 @@ namespace ProyectoClinica
             ResumeLayout(false);
         }
 
-
         private void pacientes_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string dniPaciente = pacientes.SelectedItem.ToString().Split(' ')[0];
+            Patient paciente = DataLayer.Patients.getPatient(dniPaciente);
 
+            infoPaciente.Items.Clear();
+
+            infoPaciente.Items.Add("Nombre: " + paciente.firstName);
+            infoPaciente.Items.Add("Apellido: " + paciente.lastName);
+            infoPaciente.Items.Add("DNI: " + paciente.dni);
+            infoPaciente.Items.Add("Telefono: " + paciente.phone);
+            infoPaciente.Items.Add("Celular: " + paciente.mobilePhone);
+            infoPaciente.Items.Add("Historial medico: " + paciente.medicalRecordNumber);
+            infoPaciente.Items.Add("Fecha de nacimiento: " + paciente.birthDate);
+            infoPaciente.Items.Add("Notas: " + paciente.notes);
+            infoPaciente.Items.Add("Estado: " + paciente.status);
         }
 
         private void pacientes_Click(object sender, EventArgs e)
@@ -106,7 +119,7 @@ namespace ProyectoClinica
             List<Patient> paciente = DataLayer.Patients.GetPatients();
             foreach (Patient pa in paciente)
             {
-                pacientes.Items.Add(pa);
+                pacientes.Items.Add(pa.dni + " " + pa.firstName + " " + pa.lastName);
             }
         }
 

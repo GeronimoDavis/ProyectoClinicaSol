@@ -72,7 +72,7 @@ namespace DataLayer
 
         }
 
-        public static Patient getPatient(int dni) 
+        public static Patient getPatient(string dni) 
         {
             SqlConnection conn = DataBase.connectDB();
 
