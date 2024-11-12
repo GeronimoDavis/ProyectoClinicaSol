@@ -14,7 +14,7 @@ namespace ProyectoClinica
 {
     public partial class Form2 : Form
     {
-        public Patient patientToEdit {  get; set; }
+        public Patient patientToEdit { get; set; }
 
         public Form2()
         {
@@ -25,6 +25,7 @@ namespace ProyectoClinica
         private Button borrarPaciente;
         private Button EditarPaciente;
         private Button crearPaciente;
+        private Button button1;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -34,6 +35,7 @@ namespace ProyectoClinica
             borrarPaciente = new Button();
             EditarPaciente = new Button();
             crearPaciente = new Button();
+            button1 = new Button();
             SuspendLayout();
             // 
             // pacientes
@@ -85,9 +87,20 @@ namespace ProyectoClinica
             crearPaciente.UseVisualStyleBackColor = true;
             crearPaciente.Click += crearPaciente_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(34, 145);
+            button1.Name = "button1";
+            button1.Size = new Size(130, 32);
+            button1.TabIndex = 5;
+            button1.Text = "Turnos";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
+            Controls.Add(button1);
             Controls.Add(crearPaciente);
             Controls.Add(EditarPaciente);
             Controls.Add(borrarPaciente);
@@ -146,8 +159,14 @@ namespace ProyectoClinica
 
         private void EditarPaciente_Click(object sender, EventArgs e)
         {
-            
+
             Form4 nuevoFormulario = new Form4(patientToEdit);
+            nuevoFormulario.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Form5 nuevoFormulario = new Form5();
             nuevoFormulario.ShowDialog();
         }
     }
