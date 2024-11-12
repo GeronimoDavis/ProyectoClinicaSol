@@ -8,7 +8,7 @@ using Entities;
 
 namespace DataLayer
 {
-    internal class Patients
+    public class Patients
     {
 
         public static List<Entities.Patient> GetPatients()

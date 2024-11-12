@@ -8,10 +8,10 @@ using Entities;
 
 namespace DataLayer
 {
-    class Professionals
+    public class Professionals
     {
 
-        public List<Entities.Professional> GetProfessionals()
+        public static List<Entities.Professional> GetProfessionals()
         {
             List<Entities.Professional> professionals = new List<Entities.Professional>();
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,7 @@ namespace ProyectoClinica
         private ComboBox pacientes;
         private Button borrarPaciente;
         private Button EditarPaciente;
+        private Button botonCrear;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -28,6 +30,7 @@ namespace ProyectoClinica
             infoPaciente = new ListView();
             borrarPaciente = new Button();
             EditarPaciente = new Button();
+            botonCrear = new Button();
             SuspendLayout();
             // 
             // pacientes
@@ -37,6 +40,7 @@ namespace ProyectoClinica
             pacientes.Name = "pacientes";
             pacientes.Size = new Size(263, 23);
             pacientes.TabIndex = 0;
+            pacientes.SelectedIndexChanged += pacientes_SelectedIndexChanged;
             // 
             // infoPaciente
             // 
@@ -48,7 +52,7 @@ namespace ProyectoClinica
             // 
             // borrarPaciente
             // 
-            borrarPaciente.Location = new Point(85, 285);
+            borrarPaciente.Location = new Point(34, 285);
             borrarPaciente.Name = "borrarPaciente";
             borrarPaciente.Size = new Size(195, 43);
             borrarPaciente.TabIndex = 2;
@@ -57,22 +61,48 @@ namespace ProyectoClinica
             // 
             // EditarPaciente
             // 
-            EditarPaciente.Location = new Point(373, 285);
+            EditarPaciente.Location = new Point(270, 285);
             EditarPaciente.Name = "EditarPaciente";
             EditarPaciente.Size = new Size(191, 43);
             EditarPaciente.TabIndex = 3;
             EditarPaciente.Text = "Editar paciente";
             EditarPaciente.UseVisualStyleBackColor = true;
             // 
+            // botonCrear
+            // 
+            botonCrear.Location = new Point(493, 286);
+            botonCrear.Name = "botonCrear";
+            botonCrear.Size = new Size(173, 40);
+            botonCrear.TabIndex = 4;
+            botonCrear.Text = "Crear Paciente";
+            botonCrear.UseVisualStyleBackColor = true;
+            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
+            Controls.Add(botonCrear);
             Controls.Add(EditarPaciente);
             Controls.Add(borrarPaciente);
             Controls.Add(infoPaciente);
             Controls.Add(pacientes);
             Name = "Form2";
+            Load += Form2_Load;
             ResumeLayout(false);
+        }
+
+        private void pacientes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            pacientes.Items.Clear();
+            List<Patient> paciente = DataLayer.Patients.GetPatients();
+            foreach (Patient pa in paciente) 
+            {
+                pacientes.Items.Add(pa);
+            }
         }
     }
 }
