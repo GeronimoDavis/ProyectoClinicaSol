@@ -17,5 +17,15 @@ namespace ProyectoClinica
         {
             InitializeComponent();
         }
+
+        private void listViewHorasDisponibles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViewHistorialTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
