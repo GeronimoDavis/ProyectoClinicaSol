@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using Entities;
+using System.Security.Cryptography.X509Certificates;
 
 namespace DataLayer
 {
@@ -31,6 +32,33 @@ namespace DataLayer
                 }
             }
         }
+        public static List<Appointment> GetAppointments() 
+        {
+            SqlConnection conn = DataBase.connectDB();
+
+            SqlCommand cmd= new SqlCommand();
+
+            List<Appointment> appointments = new List<Appointment>();
+
+            cmd.CommandText = "SELECT AppointmentId, PatientId, Time, ProfessionalId, Canceled, Status FROM Appointments";
+            cmd.Connection = conn;
+            cmd.CommandType = System.Data.CommandType.Text;
+
+            SqlDataReader dr = cmd.ExecuteReader();
+            while (dr.Read())
+            {
+                appointments.Add(new Appointment(Convert.ToInt32(dr["AppointmentId"]), Convert.ToInt32(dr["PatientId"]), Convert.ToDateTime(dr["Time"]), Convert.ToInt32(dr["ProfessionalId"]), Convert.ToBoolean(dr["Canceled"]), Convert.ToString(dr["Status"])));
+
+            }
+
+            dr.Close();
+            DataBase.CloseConnection(conn);
+
+
+            return appointments;
+        }
+
+
 
     }
 }
