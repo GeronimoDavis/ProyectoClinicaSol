@@ -28,6 +28,7 @@ namespace ProyectoClinica
         private Button botonEstado;
         private Label label1;
         private Button button1;
+        private Label label2;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -40,6 +41,7 @@ namespace ProyectoClinica
             botonEstado = new Button();
             label1 = new Label();
             button1 = new Button();
+            label2 = new Label();
             SuspendLayout();
             // 
             // pacientes
@@ -122,9 +124,19 @@ namespace ProyectoClinica
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(298, 40);
+            label2.Name = "label2";
+            label2.Size = new Size(107, 15);
+            label2.TabIndex = 8;
+            label2.Text = "buscar un paciente";
+            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
+            Controls.Add(label2);
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(botonEstado);
