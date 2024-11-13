@@ -27,6 +27,9 @@ namespace ProyectoClinica
                 }
                 // Habilitar comboBox2 solo si hay profesionales para mostrar
                 comboBox2.Enabled = professionals.Any();
+
+                // Deshabilitar comboBoxespecialidades para evitar que se cambien la especialidad
+                comboBoxEspecialidades.Enabled = false;
             }
         }
 
