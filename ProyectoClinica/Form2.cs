@@ -186,6 +186,7 @@ namespace ProyectoClinica
             string dniPaciente = pacientes.SelectedItem.ToString().Split(' ')[0];
             Patient paciente = DataLayer.Patients.getPatient(dniPaciente);
 
+            //se agrega al list view
             infoPaciente.Items.Clear();
 
             infoPaciente.Items.Add("Nombre: " + paciente.firstName);
@@ -200,19 +201,22 @@ namespace ProyectoClinica
 
             patientToEdit = paciente;
 
+            //obtiene una lista de objetos turnos para el paciente cuyo patientId es igual a patientToEdit.patientId
             List<Appointment> list = Appointments.GetAppointments(patientToEdit.patientId);
 
             listView1.Items.Clear();
 
             foreach (Appointment appointment in list)
             {
+                //busca en la lista de turnos el paciente los profecionales asociados a cada turno
                 Professional professional = Professionals.GetProfessional(appointment.ProfessionalId);
-                listView1.Items.Add( professional.firstName +" "+ professional.lastName +":" +" "+ appointment.Time.ToString());
+                listView1.Items.Add( professional.firstName +" "+ professional.lastName +":" +" "+ appointment.Time.ToString());//hora
             }
         }
 
         private void pacientes_Click(object sender, EventArgs e)
         {
+            //se carga en el comboBox
             pacientes.Items.Clear();
             List<Patient> paciente = DataLayer.Patients.GetPatients();
             foreach (Patient pa in paciente)
