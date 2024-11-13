@@ -218,6 +218,7 @@
             Controls.Add(textBoxNombre);
             Name = "Form3";
             Text = "Form3";
+            Load += Form3_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -128,6 +128,7 @@
             textBoxNombre.PlaceholderText = "Nombre";
             textBoxNombre.Size = new Size(99, 23);
             textBoxNombre.TabIndex = 8;
+            textBoxNombre.TextChanged += textBoxNombre_TextChanged;
             // 
             // textBoxApellido
             // 

@@ -48,6 +48,67 @@ namespace ProyectoClinica
 
         private void button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(textBoxNombre.Text) ||
+                string.IsNullOrWhiteSpace(textBoxApellido.Text) ||
+                string.IsNullOrWhiteSpace(textBoxDNI.Text) ||
+                string.IsNullOrWhiteSpace(textBoxTelefono.Text) ||
+                string.IsNullOrWhiteSpace(textBoxCelular.Text) ||
+                string.IsNullOrWhiteSpace(textBoxHistoriaClinica.Text))
+            {
+                MessageBox.Show("Por favor, complete todos los campos requeridos.");
+                return;
+            }
+
+            if (textBoxDNI.Text.Length != 8)
+            {
+                MessageBox.Show("El DNI debe tener exactamente 8 caracteres.");
+                return;
+            }
+
+            if (!int.TryParse(textBoxDNI.Text, out int dni))
+            {
+                MessageBox.Show("El DNI debe ser un número válido.");
+                return;
+            }
+
+            if (textBoxCelular.Text.Length < 8 || textBoxCelular.Text.Length > 20)
+            {
+                MessageBox.Show("El celular debe ser un número válido.");
+                return;
+            }
+
+
+            if (textBoxTelefono.Text.Length < 8 || textBoxTelefono.Text.Length > 20)
+            {
+                MessageBox.Show("El telefono debe ser un número válido.");
+                return;
+            }
+
+            DateTime birthDate;
+            DateTime minDate = new DateTime(1900, 1, 1); // Límite inferior para la fecha
+
+            if (!DateTime.TryParse(dateTimePicker1.Text, out birthDate))
+            {
+                MessageBox.Show("La fecha de nacimiento no es válida.");
+                return;
+            }
+            else if (birthDate > DateTime.Now)
+            {
+                MessageBox.Show("La fecha de nacimiento no es real.");
+                return;
+            }
+            else if (birthDate < minDate)
+            {
+                MessageBox.Show("La fecha de nacimiento no puede ser anterior al 1 de enero de 1900.");
+                return;
+            }
+
+            if (!int.TryParse(textBoxHistoriaClinica.Text, out int medicalRecordNumber))
+            {
+                MessageBox.Show("El número de historial clínico debe ser un número válido.");
+                return;
+            }
+
             Patient editedPatient = new Patient();
 
             editedPatient.patientId = Patient.patientId;
@@ -64,6 +125,11 @@ namespace ProyectoClinica
             MessageBox.Show("Paciente Editado");
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void textBoxNombre_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
