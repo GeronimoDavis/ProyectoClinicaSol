@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Entities
 {
-    public class Appointments
+    public class Appointment
     {
         public int AppointmentId { get; set; }
         public int PatientId { get; set; }
@@ -15,9 +15,9 @@ namespace Entities
         public bool Canceled { get; set; }
         public string Status { get; set; }
 
-        public Appointments() { }
+        public Appointment() { }
 
-        public Appointments(int appointmentId, int patientId, DateTime time, int professionalId, bool canceled, string status) 
+        public Appointment(int appointmentId, int patientId, DateTime time, int professionalId, bool canceled, string status) 
         {
             AppointmentId = appointmentId;
             PatientId = patientId;
