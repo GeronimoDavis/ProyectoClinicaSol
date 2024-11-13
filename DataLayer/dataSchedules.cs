@@ -24,7 +24,7 @@ namespace DataLayer
 
             while (dr.Read())
             {
-                schedules.Add(new Schedules(Convert.ToInt32(dr["scheduleId"]),Convert.ToInt32(dr["day"]), Convert.ToDateTime(dr["time"]), Convert.ToInt32(dr["professionalId"])));
+                schedules.Add(new Schedules(Convert.ToInt32(dr["scheduleId"]),Convert.ToInt32(dr["day"]), TimeSpan.Parse(dr["time"].ToString()), Convert.ToInt32(dr["professionalId"])));
             }
 
             dr.Close();

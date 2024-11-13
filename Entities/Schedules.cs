@@ -10,12 +10,12 @@ namespace Entities
     {
         public int ScheduleId { get; set; }
         public int Day {  get; set; }
-        public DateTime Time { get; set; }
+        public TimeSpan Time { get; set; }
         public int ProfessionalID { get; set; }
 
         public Schedules() { }
 
-        public Schedules(int scheduleId, int day, DateTime time, int professionalID) 
+        public Schedules(int scheduleId, int day, TimeSpan time, int professionalID) 
         {
             ScheduleId = scheduleId;
             Day = day;

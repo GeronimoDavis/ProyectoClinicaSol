@@ -66,6 +66,7 @@
             horarios.Name = "horarios";
             horarios.Size = new Size(267, 23);
             horarios.TabIndex = 5;
+            horarios.SelectedIndexChanged += horarios_SelectedIndexChanged;
             // 
             // Form5
             // 

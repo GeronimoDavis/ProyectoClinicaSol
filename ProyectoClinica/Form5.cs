@@ -1,4 +1,5 @@
-﻿using Entities;
+﻿using DataLayer;
+using Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace ProyectoClinica
 {
@@ -34,7 +37,20 @@ namespace ProyectoClinica
 
         private void Form5_Load(object sender, EventArgs e)
         {
+            horarios.Items.Clear();
+            List<Schedules> schedules = dataSchedules.GetSchedules(professionalEle.professionalId);
+
+            foreach (Schedules schedule in schedules)
+            {
+                horarios.Items.Add(schedule.Time.ToString());
+            }
 
         }
+
+        private void horarios_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }
