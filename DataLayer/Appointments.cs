@@ -32,7 +32,7 @@ namespace DataLayer
                 }
             }
         }
-        public static List<Appointment> GetAppointments() 
+        public static List<Appointment> GetAppointments(int idPaciente) 
         {
             SqlConnection conn = DataBase.connectDB();
 
@@ -40,14 +40,14 @@ namespace DataLayer
 
             List<Appointment> appointments = new List<Appointment>();
 
-            cmd.CommandText = "SELECT AppointmentId, PatientId, Time, ProfessionalId, Canceled, Status FROM Appointments";
+            cmd.CommandText = "SELECT appointmentId, patientId, dateTime, professionalId, canceled, status FROM Appointments WHERE patientId = " + idPaciente.ToString();
             cmd.Connection = conn;
             cmd.CommandType = System.Data.CommandType.Text;
 
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
-                appointments.Add(new Appointment(Convert.ToInt32(dr["AppointmentId"]), Convert.ToInt32(dr["PatientId"]), Convert.ToDateTime(dr["Time"]), Convert.ToInt32(dr["ProfessionalId"]), Convert.ToBoolean(dr["Canceled"]), Convert.ToString(dr["Status"])));
+                appointments.Add(new Appointment(Convert.ToInt32(dr["appointmentId"]), Convert.ToInt32(dr["patientId"]), Convert.ToDateTime(dr["dateTime"]), Convert.ToInt32(dr["professionalId"]), Convert.ToBoolean(dr["canceled"]), Convert.ToString(dr["status"])));
 
             }
 

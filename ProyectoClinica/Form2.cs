@@ -12,11 +12,11 @@ using System.Windows.Forms;
 
 namespace ProyectoClinica
 {
-    
+
     public partial class Form2 : Form
     {
         public Patient patientToEdit { get; set; }
-        public Professional professionalEle {  get; set; }
+        public Professional professionalEle { get; set; }
 
         public Form2(Professional professional)
         {
@@ -32,6 +32,8 @@ namespace ProyectoClinica
         private Label label1;
         private Button button1;
         private Label label2;
+        private ListView listView1;
+        private Label label3;
         private ListView infoPaciente;
 
         private void InitializeComponent()
@@ -45,12 +47,14 @@ namespace ProyectoClinica
             label1 = new Label();
             button1 = new Button();
             label2 = new Label();
+            listView1 = new ListView();
+            label3 = new Label();
             SuspendLayout();
             // 
             // pacientes
             // 
             pacientes.FormattingEnabled = true;
-            pacientes.Location = new Point(213, 58);
+            pacientes.Location = new Point(182, 58);
             pacientes.Name = "pacientes";
             pacientes.Size = new Size(263, 23);
             pacientes.TabIndex = 0;
@@ -59,9 +63,9 @@ namespace ProyectoClinica
             // 
             // infoPaciente
             // 
-            infoPaciente.Location = new Point(200, 96);
+            infoPaciente.Location = new Point(182, 96);
             infoPaciente.Name = "infoPaciente";
-            infoPaciente.Size = new Size(296, 172);
+            infoPaciente.Size = new Size(294, 172);
             infoPaciente.TabIndex = 1;
             infoPaciente.UseCompatibleStateImageBehavior = false;
             infoPaciente.View = View.List;
@@ -130,15 +134,38 @@ namespace ProyectoClinica
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(298, 40);
+            label2.Location = new Point(264, 40);
             label2.Name = "label2";
             label2.Size = new Size(107, 15);
             label2.TabIndex = 8;
             label2.Text = "buscar un paciente";
             // 
+            // listView1
+            // 
+            listView1.Location = new Point(482, 104);
+            listView1.Name = "listView1";
+            listView1.Size = new Size(184, 159);
+            listView1.TabIndex = 9;
+            listView1.UseCompatibleStateImageBehavior = false;
+            listView1.View = View.List;
+            listView1.SelectedIndexChanged += listView1_SelectedIndexChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.Location = new Point(504, 70);
+            label3.Name = "label3";
+            label3.Size = new Size(135, 21);
+            label3.TabIndex = 10;
+            label3.Text = "Historial de turnos ";
+            label3.Click += label3_Click;
+            // 
             // Form2
             // 
             ClientSize = new Size(678, 350);
+            Controls.Add(label3);
+            Controls.Add(listView1);
             Controls.Add(label2);
             Controls.Add(button1);
             Controls.Add(label1);
@@ -172,6 +199,16 @@ namespace ProyectoClinica
             infoPaciente.Items.Add("Estado: " + paciente.status);
 
             patientToEdit = paciente;
+
+            List<Appointment> list = Appointments.GetAppointments(patientToEdit.patientId);
+
+            listView1.Items.Clear();
+
+            foreach (Appointment appointment in list)
+            {
+                Professional professional = Professionals.GetProfessional(appointment.ProfessionalId);
+                listView1.Items.Add( professional.firstName.ToString() +" "+ professional.lastName +" "+ appointment.Time.ToString());
+            }
         }
 
         private void pacientes_Click(object sender, EventArgs e)
@@ -273,6 +310,17 @@ namespace ProyectoClinica
                 MessageBox.Show("Por favor, seleccione un paciente.");
 
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            
         }
     }
 }

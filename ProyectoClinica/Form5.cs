@@ -37,13 +37,23 @@ namespace ProyectoClinica
 
         private void Form5_Load(object sender, EventArgs e)
         {
-            horarios.Items.Clear();
-            List<Schedules> schedules = dataSchedules.GetSchedules(professionalEle.professionalId);
-
-            foreach (Schedules schedule in schedules)
+            try
             {
-                horarios.Items.Add(schedule.Time.ToString());
+                horarios.Items.Clear();
+                List<Schedules> schedules = dataSchedules.GetSchedules(professionalEle.professionalId);
+
+                foreach (Schedules schedule in schedules)
+                {
+                    horarios.Items.Add(schedule.Time.ToString());
+                }
+
+            }catch (Exception ex)
+            {
+                MessageBox.Show("Antes debes elegir un profesional");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
+            
 
         }
 
