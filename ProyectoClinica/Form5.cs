@@ -13,9 +13,13 @@ namespace ProyectoClinica
 {
     public partial class Form5 : Form
     {
-        public Form5(Patient patientToEdit)
+        public Professional professionalEle { get; set; }
+        public Patient patientEle { get; set; }
+        public Form5(Patient patientToEdit, Professional professional)
         {
             InitializeComponent();
+            professionalEle = professional;
+            patientEle = patientToEdit;
         }
 
         private void listViewHorasDisponibles_SelectedIndexChanged(object sender, EventArgs e)
@@ -24,6 +28,11 @@ namespace ProyectoClinica
         }
 
         private void listViewHistorialTurnos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form5_Load(object sender, EventArgs e)
         {
 
         }

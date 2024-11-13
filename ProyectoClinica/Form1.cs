@@ -6,9 +6,11 @@ namespace ProyectoClinica
 {
     public partial class Form1 : Form
     {
+        public Professional professionalEle { get; set; }
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -45,7 +47,7 @@ namespace ProyectoClinica
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form2 nuevoFormulario = new Form2();
+            Form2 nuevoFormulario = new Form2(professionalEle);
             nuevoFormulario.ShowDialog();
 
         }
@@ -56,15 +58,15 @@ namespace ProyectoClinica
             if (comboBox2.SelectedItem != null) 
             {
                 int idProfesional = Convert.ToInt32(comboBox2.SelectedItem.ToString().Split(" ")[0]);
-                Professional professional = DataLayer.Professionals.GetProfessional(idProfesional);
+                professionalEle = DataLayer.Professionals.GetProfessional(idProfesional);
 
                 listView1.Items.Clear(); // Limpiar los elementos previos
 
-                listView1.Items.Add("Nombre: " + professional.firstName);
-                listView1.Items.Add("Apellido: " + professional.lastName);
-                listView1.Items.Add("DNI: " + professional.dni);
-                listView1.Items.Add("Celular: " + professional.mobilePhone);
-                listView1.Items.Add("Email: " + professional.email);
+                listView1.Items.Add("Nombre: " + professionalEle.firstName);
+                listView1.Items.Add("Apellido: " + professionalEle.lastName);
+                listView1.Items.Add("DNI: " + professionalEle.dni);
+                listView1.Items.Add("Celular: " + professionalEle.mobilePhone);
+                listView1.Items.Add("Email: " + professionalEle.email);
 
             }
             

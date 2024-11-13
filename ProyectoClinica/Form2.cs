@@ -12,13 +12,16 @@ using System.Windows.Forms;
 
 namespace ProyectoClinica
 {
+    
     public partial class Form2 : Form
     {
         public Patient patientToEdit { get; set; }
+        public Professional professionalEle {  get; set; }
 
-        public Form2()
+        public Form2(Professional professional)
         {
             InitializeComponent();
+            professionalEle = professional;
         }
 
         private ComboBox pacientes;
@@ -261,7 +264,7 @@ namespace ProyectoClinica
 
             if (patientToEdit != null)
             {
-                Form5 nuevoFormulario = new Form5(patientToEdit);
+                Form5 nuevoFormulario = new Form5(patientToEdit, professionalEle);
                 nuevoFormulario.ShowDialog();
             }
             else
