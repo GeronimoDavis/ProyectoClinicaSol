@@ -16,14 +16,14 @@ namespace DataLayer
         {
             using (SqlConnection conn = DataBase.connectDB()) 
             {
-                string query = @"INSERT INTO Appointments (AppointmentId, PatientId, Time, ProfessionalId, Canceled, Status) 
-                                VALUES (@AppointmentId, @PatientId, @Time, @ProfessionalId, @Canceled, @Status)";
+                string query = @"INSERT INTO Appointments (patientId, dateTime, professionalId, canceled, status) 
+                                VALUES (@PatientId, @DateTime, @ProfessionalId, @Canceled, @Status)";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn)) 
                 {
-                    cmd.Parameters.AddWithValue("@AppointmentId", appointment.AppointmentId);
+                    
                     cmd.Parameters.AddWithValue("@PatientId", appointment.PatientId);
-                    cmd.Parameters.AddWithValue("@Time", appointment.Time);
+                    cmd.Parameters.AddWithValue("@DateTime", appointment.Time);
                     cmd.Parameters.AddWithValue("@ProfessionalId", appointment.ProfessionalId);
                     cmd.Parameters.AddWithValue("@Canceled", appointment.Canceled);
                     cmd.Parameters.AddWithValue("@Status", appointment.Status);

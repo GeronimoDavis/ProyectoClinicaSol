@@ -39,6 +39,7 @@
             monthCalendar1.Location = new Point(34, 76);
             monthCalendar1.Name = "monthCalendar1";
             monthCalendar1.TabIndex = 0;
+            monthCalendar1.DateChanged += monthCalendar1_DateChanged;
             // 
             // button1
             // 
@@ -48,6 +49,7 @@
             button1.TabIndex = 1;
             button1.Text = "Generar turno";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label1
             // 

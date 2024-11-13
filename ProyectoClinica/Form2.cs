@@ -63,7 +63,7 @@ namespace ProyectoClinica
             // 
             // infoPaciente
             // 
-            infoPaciente.Location = new Point(182, 96);
+            infoPaciente.Location = new Point(169, 91);
             infoPaciente.Name = "infoPaciente";
             infoPaciente.Size = new Size(294, 172);
             infoPaciente.TabIndex = 1;
@@ -142,9 +142,9 @@ namespace ProyectoClinica
             // 
             // listView1
             // 
-            listView1.Location = new Point(482, 104);
+            listView1.Location = new Point(469, 104);
             listView1.Name = "listView1";
-            listView1.Size = new Size(184, 159);
+            listView1.Size = new Size(197, 159);
             listView1.TabIndex = 9;
             listView1.UseCompatibleStateImageBehavior = false;
             listView1.View = View.List;
@@ -154,7 +154,7 @@ namespace ProyectoClinica
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI Light", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(504, 70);
+            label3.Location = new Point(494, 70);
             label3.Name = "label3";
             label3.Size = new Size(135, 21);
             label3.TabIndex = 10;
@@ -207,7 +207,7 @@ namespace ProyectoClinica
             foreach (Appointment appointment in list)
             {
                 Professional professional = Professionals.GetProfessional(appointment.ProfessionalId);
-                listView1.Items.Add( professional.firstName.ToString() +" "+ professional.lastName +" "+ appointment.Time.ToString());
+                listView1.Items.Add( professional.firstName +" "+ professional.lastName +":" +" "+ appointment.Time.ToString());
             }
         }
 

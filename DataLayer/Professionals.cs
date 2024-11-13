@@ -95,7 +95,7 @@ namespace DataLayer
 
             SqlDataReader dr = cmd.ExecuteReader();
 
-            while (dr.Read()) // Recorre cada fila de los resultados obtenidos.
+            while (dr.Read()) 
             {
                 professionals.Add(new Professional(
                     Convert.ToInt32(dr["professionalId"]),
